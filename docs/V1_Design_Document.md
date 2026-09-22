@@ -101,24 +101,19 @@ src
 └── logging
 ```
 
-Target latency:
+### Conversation Orchestration
 
-| Component          | Target      |
-| ------------------ | ----------- |
-| STT                | < 1 second  |
-| LLM Response Start | < 2 seconds |
-| TTS Start          | < 500ms     |
-| Total Response     | < 4 seconds |
-
-### Conversation Engine
+This Engine will handle orchestration of the `LLM Engine`, TTS, STT, Sessions
 
 ### LLM Engine
+
+This Engine will handle orchestration of the LLM, handling tool usage, context
+management, and memory.
 
 ### Audio I/O
 
 The project will use `Vosk Server / SDK` for speech to text, temporarily use
-[Google Cloud's tts](https://docs.cloud.google.com/java/docs/reference/google-cloud-texttospeech/latest/overview)
-for text to speech
+[Google Cloud's tts](https://docs.cloud.google.com/java/docs/reference/google-cloud-texttospeech/latest/overview) for text to speech.
 
 ## Construction
 
