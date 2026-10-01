@@ -3,14 +3,13 @@
  */
 package org.example;
 
-import org.example.core.llm_interface;
+import org.example.core.Ollama_Interface;
 
 public class App {
-  public String getGreeting() {
-    return "Hello World!";
-  }
 
   public static void main(String[] args) {
-    System.out.println(new App().getGreeting());
+    Ollama_Interface ollama = new Ollama_Interface("http://100.102.80.23", "11434", "gemma4", true);
+    ollama.generateResponse("Hello World!");
+
   }
 }

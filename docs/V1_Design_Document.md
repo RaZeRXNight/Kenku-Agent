@@ -69,7 +69,7 @@ src
 └── logging
 ```
 
-### LLM Engine
+### LLM Engine Architecture
 
 This Engine will handle orchestration of the LLM, handling tool usage, context
 management, and memory.
@@ -80,6 +80,13 @@ management, and memory.
 
 The project will use `Vosk Server / SDK` for speech to text, temporarily use
 [Google Cloud's tts](https://docs.cloud.google.com/java/docs/reference/google-cloud-texttospeech/latest/overview) for text to speech.
+
+### Data Flow
+
+1. Audio I/O captures speech -> STT converts into text.
+2. Text is sent to the llm.
+3. The LLM's output is returned, and streamed through TSS (text to speech)
+4. The Harness orchestrates Agents, which execute tools and MCPs.
 
 ## Construction
 
@@ -98,31 +105,38 @@ The class will be constructed as
 ```java
 
 // Java uses Records, which are similar to tuples in other languages.
-record message(string sender, string message) {
+record message(string role, string message) {
   public class message{
-    private string sender;
+    private string role;
     private string message;
 
-    public message(string sender, string message) {
-      this.sender = sender;
+    public message(string role, string message) {
+      this.role = role;
       this.message = message;
     }
   }
 }
 
 public class llm_interface {
-  private string provider;
-  private string model;
-  private message[] conversation;
+  protected string provider;
+  protected string model;
+  protected string apiKey;
+  protected boolean stream;
+  protected message[] messages;
 }
 
-``
+public class ollama {
+  string host;
+  string port;
+
+}
+
 ```
 
 ### Conversation Context Management
 
-The Context Management Class will handle how agents will manage their memory. This will be
-achieved through using sqlite3 for persistent storage.
+The Context Management Class will handle how agents will manage their memory.
+This will be achieved through using sqlite3 for persistent storage.
 
 ### CLI Tooling
 
