@@ -3,13 +3,17 @@
  */
 package org.example;
 
-import org.example.core.Ollama_Interface;
+import org.example.config.AppConfig;
+// import org.example.core.Ollama_Interface;
 
 public class App {
 
   public static void main(String[] args) {
-    Ollama_Interface ollama = new Ollama_Interface("http://100.102.80.23", "11434", "gemma4", true);
-    ollama.generateResponse("Hello World!");
+    // Ollama_Interface ollama = new Ollama_Interface("http://100.102.80.23",
+    // "11434", "gemma4", true);
+    // ollama.generateResponse("Hello World!");
 
+    AppConfig userConfig = new AppConfig();
+    userConfig.outputProgramEnv();
   }
 }
