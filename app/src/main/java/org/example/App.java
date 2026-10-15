@@ -14,6 +14,7 @@ public class App {
     // ollama.generateResponse("Hello World!");
 
     AppConfig userConfig = new AppConfig();
+    userConfig.resetConfig();
     userConfig.outputProgramEnv();
   }
 }
