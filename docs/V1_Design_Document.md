@@ -138,9 +138,49 @@ public class ollama {
 The Context Management Class will handle how agents will manage their memory.
 This will be achieved through using sqlite3 for persistent storage.
 
+#### Schema
+
+```Schema
+
+users
+id,
+username,
+password,
+
+userKeys
+id,
+key,
+user_id
+
+Session
+id,
+name,
+user_id,
+created_at,
+updated_at,
+
+SessionMessage
+id,
+role,
+message,
+created_at,
+updated_at,
+model_id,
+session_id,
+user_id,
+
+
+```
+
 ### CLI Tooling
 
 ### GUI Development
+
+### Dependencies
+
+- <https://github.com/googleapis/google-http-java-client>
+- <https://github.com/code4craft/webmagic>
+-
 
 ## System Testing
 

@@ -23,6 +23,9 @@ dependencies {
 
     // This dependency is used by the application.
     implementation(libs.guava)
+
+    implementation(platform("com.fasterxml.jackson:jackson-bom:2.18.3"))
+    implementation("com.fasterxml.jackson.core:jackson-databind")
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
