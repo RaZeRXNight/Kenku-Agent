@@ -14,13 +14,6 @@ public class App {
     // ollama.generateResponse("Hello World!");
 
     AppConfig userConfig = new AppConfig();
-    try {
-      userConfig.resetConfig();
-    } catch (Exception e) {
-      return;
-    }
-    System.out.println(userConfig.setConfigValue("", "Hello World"));
-    System.out.println(userConfig.getConfigValue(""));
 
   }
 }

@@ -30,14 +30,13 @@ public class AppConfig extends BaseAppConfig {
   /**
    * @return returns the config value
    */
-  public String getConfigValue(String field) {
+  public ConfigClass getConfig() throws Exception {
     try {
       ConfigClass config = readConfig();
-      System.out.println(config.name);
+      return config;
     } catch (Exception e) {
-      return "ERROR";
+      throw new Exception("Unable to Load Configuration Settings.");
     }
-    return "";
   }
 
   /**
@@ -53,20 +52,4 @@ public class AppConfig extends BaseAppConfig {
 
     return 0;
   }
-}
-
-class ConfigClass {
-  public String name = "Jenny";
-  public String model = "gemma4";
-  public String version = "0.0.1";
-  public String db_conn = "postresql://postgres";
-
-  public ConfigClass() {
-  };
-
-  public ConfigClass(String name, String model) {
-    this.name = name;
-    this.model = model;
-  }
-
 }

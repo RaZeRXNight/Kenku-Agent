@@ -41,6 +41,14 @@ class BaseAppConfig {
       System.out.println("ERROR: Operating System Unsupported");
       System.exit(1);
     }
+
+    if (VerifyConfig() != 0) {
+      System.out.println(
+          String.format("ERROR: Error in Parsing %s Config File",
+              ConfigPath.toString()));
+      System.exit(1);
+
+    }
   }
 
   public void outputProgramEnv() {
@@ -74,6 +82,10 @@ class BaseAppConfig {
     }
   }
 
+  /**
+   * @param newConfig
+   * @return
+   */
   protected int writeConfig(ConfigClass newConfig) {
     System.out.println(String.format("Writting to %s...", ConfigPath));
 
@@ -85,6 +97,9 @@ class BaseAppConfig {
     }
   }
 
+  /**
+   * @return ConfigClass Settings Object.
+   */
   protected ConfigClass readConfig() {
     try (Scanner fileScanner = new Scanner(ConfigPath.toFile())) {
       String scannerOutput = "";
@@ -95,9 +110,7 @@ class BaseAppConfig {
       }
 
       // Parse the string for json data to map to the SettingsClass
-      ConfigClass data = myMapper.readValue(
-          scannerOutput,
-          ConfigClass.class);
+      ConfigClass data = myMapper.readValue(scannerOutput, ConfigClass.class);
 
       return data;
     } catch (Exception e) {
@@ -107,6 +120,10 @@ class BaseAppConfig {
 
   }
 
+  /**
+   * @param file
+   * @return ConfigClass Settings Object.
+   */
   protected ConfigClass readConfig(File file) {
     try (Scanner fileScanner = new Scanner(file)) {
       String scannerOutput = "";
@@ -117,10 +134,7 @@ class BaseAppConfig {
       }
 
       // Parse the string for json data to map to the SettingsClass
-      ConfigClass data = myMapper.readValue(
-          scannerOutput,
-          ConfigClass.class);
-
+      ConfigClass data = myMapper.readValue(scannerOutput, ConfigClass.class);
       return data;
     } catch (Exception e) {
       throw new RuntimeException(e);
@@ -129,4 +143,13 @@ class BaseAppConfig {
 
   }
 
+  protected int VerifyConfig() {
+    try {
+      ConfigClass settings = readConfig();
+      return 0;
+    } finally {
+      return 1;
+
+    }
+  }
 }
