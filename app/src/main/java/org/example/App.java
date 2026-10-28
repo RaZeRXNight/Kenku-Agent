@@ -4,16 +4,30 @@
 package org.example;
 
 import org.example.config.AppConfig;
+import org.example.config.ConfigClass;
 // import org.example.core.Ollama_Interface;
+import org.example.core.Llama_CPP_Interface;
 
 public class App {
 
   public static void main(String[] args) {
-    // Ollama_Interface ollama = new Ollama_Interface("http://100.102.80.23",
-    // "11434", "gemma4", true);
-    // ollama.generateResponse("Hello World!");
-
     AppConfig userConfig = new AppConfig();
+
+    try {
+      ConfigClass userConfiguration = userConfig.getConfig();
+      String host = userConfiguration.getProviderURL();
+      String port = userConfiguration.getProviderPort();
+      String model = userConfiguration.getProviderModel();
+      Boolean streaming = userConfiguration.getProviderStreaming();
+
+      Llama_CPP_Interface ollama = new Llama_CPP_Interface(host, port, model, streaming);
+      ollama.generateResponse("Hello World!");
+
+    } catch (Exception e) {
+      // TODO: handle exception
+      System.out.println(e);
+      System.exit(1);
+    }
 
   }
 }

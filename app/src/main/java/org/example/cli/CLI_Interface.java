@@ -1,8 +1,9 @@
 package org.example.cli;
 
-import org.example.config.ConfigClass;
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
+
+import org.example.config.ConfigClass;
 
 public class CLI_Interface {
   ConfigClass Settings;

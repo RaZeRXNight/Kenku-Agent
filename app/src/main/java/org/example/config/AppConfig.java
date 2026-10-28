@@ -1,5 +1,6 @@
 package org.example.config;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 /**
@@ -30,26 +31,13 @@ public class AppConfig extends BaseAppConfig {
   /**
    * @return returns the config value
    */
-  public ConfigClass getConfig() throws Exception {
+  public ConfigClass getConfig() throws FileNotFoundException {
     try {
       ConfigClass config = readConfig();
       return config;
     } catch (Exception e) {
-      throw new Exception("Unable to Load Configuration Settings.");
+      throw new FileNotFoundException("Unable to Load Configuration Settings.");
     }
   }
 
-  /**
-   * @return Returns a zero if successful, or non-zero if unsuccessful.
-   */
-  public int resetConfig() throws IOException {
-    try {
-      ConfigClass defaultConfig = new ConfigClass();
-      writeConfig(defaultConfig);
-    } catch (Exception e) {
-      System.out.println(e);
-    }
-
-    return 0;
-  }
 }

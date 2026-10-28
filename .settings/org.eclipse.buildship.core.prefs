@@ -1,11 +1,11 @@
-arguments=--init-script /home/ricardom/.cache/nvim/jdtls/Kenku-Agent/config/org.eclipse.osgi/57/0/.cp/gradle/init/init.gradle
+arguments=--init-script /home/ricardom/.config/VSCodium/User/globalStorage/redhat.java/1.58.0/config_linux/org.eclipse.osgi/57/0/.cp/gradle/init/init.gradle --init-script /home/ricardom/.config/VSCodium/User/globalStorage/redhat.java/1.58.0/config_linux/org.eclipse.osgi/57/0/.cp/gradle/protobuf/init.gradle --init-script /home/ricardom/.config/VSCodium/User/globalStorage/redhat.java/1.58.0/config_linux/org.eclipse.osgi/57/0/.cp/gradle/kotlin/init.gradle --init-script /home/ricardom/.config/VSCodium/User/globalStorage/redhat.java/1.58.0/config_linux/org.eclipse.osgi/57/0/.cp/gradle/groovy/init.gradle --init-script /home/ricardom/.config/VSCodium/User/globalStorage/redhat.java/1.58.0/config_linux/org.eclipse.osgi/57/0/.cp/gradle/scala/init.gradle
 auto.sync=false
 build.scans.enabled=false
 connection.gradle.distribution=GRADLE_DISTRIBUTION(WRAPPER)
 connection.project.dir=
 eclipse.preferences.version=1
 gradle.user.home=
-java.home=/usr/lib/jvm/java-21-openjdk
+java.home=/home/ricardom/.vscode-oss/extensions/redhat.java-1.58.0-linux-x64/jre/25.0.4.1-linux-x86_64
 jvm.arguments=
 offline.mode=false
 override.workspace.settings=true

@@ -1,6 +1,8 @@
 package org.example.config;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.nio.file.FileSystem;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
@@ -42,12 +44,16 @@ class BaseAppConfig {
       System.exit(1);
     }
 
-    if (VerifyConfig() != 0) {
+    try {
+      // For now it Destructively resets the config.
+      if (!VerifyConfig()) {
+        resetConfig();
+      }
+    } catch (Exception e) {
       System.out.println(
           String.format("ERROR: Error in Parsing %s Config File",
               ConfigPath.toString()));
       System.exit(1);
-
     }
   }
 
@@ -100,7 +106,7 @@ class BaseAppConfig {
   /**
    * @return ConfigClass Settings Object.
    */
-  protected ConfigClass readConfig() {
+  protected ConfigClass readConfig() throws RuntimeException {
     try (Scanner fileScanner = new Scanner(ConfigPath.toFile())) {
       String scannerOutput = "";
 
@@ -115,7 +121,6 @@ class BaseAppConfig {
       return data;
     } catch (Exception e) {
       throw new RuntimeException(e);
-
     }
 
   }
@@ -143,13 +148,26 @@ class BaseAppConfig {
 
   }
 
-  protected int VerifyConfig() {
+  protected boolean VerifyConfig() throws FileNotFoundException {
     try {
       ConfigClass settings = readConfig();
-      return 0;
-    } finally {
-      return 1;
-
+      return true;
+    } catch (Exception e) {
+      return false;
     }
+  }
+
+  /**
+   * @return Returns a zero if successful, or non-zero if unsuccessful.
+   */
+  public int resetConfig() throws IOException {
+    try {
+      ConfigClass defaultConfig = new ConfigClass();
+      writeConfig(defaultConfig);
+    } catch (Exception e) {
+      System.out.println(e);
+    }
+
+    return 0;
   }
 }

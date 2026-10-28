@@ -10,18 +10,6 @@ class Message {
     this.role = role;
     this.content = content;
   }
-
-  protected String stringFieldMapper(String firstArg, String SecondArg) {
-    return String.format("\"%s\": \"%s\"", firstArg, SecondArg);
-  }
-
-  @Override
-  public String toString() {
-    String role = stringFieldMapper("role", this.role);
-    String content = stringFieldMapper("content", this.content);
-    String currentMessage = String.format("{%s}", String.join(",", role, content));
-    return currentMessage;
-  }
 }
 
 class LLMResponse {
@@ -41,14 +29,6 @@ public abstract class LLM_Interface {
   protected ArrayList<Message> messages;
   protected String systemPrompt;
   protected String fullURL;
-
-  protected String messagesToString() {
-    ArrayList<String> messageCollection = new ArrayList<String>();
-    for (Message message : messages) {
-      messageCollection.add(message.toString());
-    }
-    return String.format("[%s]", String.join(",", messageCollection));
-  }
 
   protected void appendMessage(String Role, String Content) {
     if (Role.strip().length() == 0) {

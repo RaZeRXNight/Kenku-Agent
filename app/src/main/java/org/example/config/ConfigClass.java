@@ -6,6 +6,11 @@ public class ConfigClass {
   private String version = "0.0.1";
   private String db_conn = "postresql://postgres";
 
+  private String providerURL = "http://localhost";
+  private String providerPort = "8080";
+  private String providerModel = "gemma4";
+  private Boolean providerStreaming = true;
+
   public ConfigClass() {
   };
 
@@ -28,6 +33,54 @@ public class ConfigClass {
 
   public String getDb_conn() {
     return db_conn;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public void setModel(String model) {
+    this.model = model;
+  }
+
+  public void setVersion(String version) {
+    this.version = version;
+  }
+
+  public void setDb_conn(String db_conn) {
+    this.db_conn = db_conn;
+  }
+
+  public String getProviderURL() {
+    return providerURL;
+  }
+
+  public void setProviderURL(String providerURL) {
+    this.providerURL = providerURL;
+  }
+
+  public String getProviderPort() {
+    return providerPort;
+  }
+
+  public void setProviderPort(String providerPort) {
+    this.providerPort = providerPort;
+  }
+
+  public String getProviderModel() {
+    return providerModel;
+  }
+
+  public void setProviderModel(String providerModel) {
+    this.providerModel = providerModel;
+  }
+
+  public Boolean getProviderStreaming() {
+    return providerStreaming;
+  }
+
+  public void setProviderStreaming(Boolean providerStreaming) {
+    this.providerStreaming = providerStreaming;
   }
 
 }
