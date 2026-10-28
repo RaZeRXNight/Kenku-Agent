@@ -5,8 +5,10 @@ package org.example;
 
 import org.example.config.AppConfig;
 import org.example.config.ConfigClass;
-// import org.example.core.Ollama_Interface;
 import org.example.core.Llama_CPP_Interface;
+
+// import jdk.internal.org.jline.terminal.Terminal;
+// import jdk.internal.org.jline.terminal.TerminalBuilder;
 
 public class App {
 
@@ -15,14 +17,16 @@ public class App {
 
     try {
       ConfigClass userConfiguration = userConfig.getConfig();
-      String host = userConfiguration.getProviderURL();
-      String port = userConfiguration.getProviderPort();
-      String model = userConfiguration.getProviderModel();
-      Boolean streaming = userConfiguration.getProviderStreaming();
+      // String host = userConfiguration.getProviderURL();
+      // String port = userConfiguration.getProviderPort();
+      // String model = userConfiguration.getProviderModel();
+      // Boolean streaming = userConfiguration.getProviderStreaming();
+      //
+      // Llama_CPP_Interface ollama = new Llama_CPP_Interface(host, port, model,
+      // streaming);
+      // ollama.generateResponse("Hello World!");
 
-      Llama_CPP_Interface ollama = new Llama_CPP_Interface(host, port, model, streaming);
-      ollama.generateResponse("Hello World!");
-
+      // Terminal terminal = TerminalBuilder.builder().system(true).build();
     } catch (Exception e) {
       // TODO: handle exception
       System.out.println(e);

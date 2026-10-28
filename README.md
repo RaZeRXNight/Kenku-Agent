@@ -24,3 +24,8 @@ evolving into a desktop GUI application.
 
 Any further documentation and knowledge of how the codebase works will be found
 in [docs/](docs/)
+
+## Dependencies
+
+- <https://github.com/FasterXML/jackson>
+- <https://github.com/jline/jline3>
